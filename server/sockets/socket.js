@@ -1,10 +1,8 @@
 const socketActions = require('./actions')
 
-const users = require('./usernames/usernames')
+const usernames = require('./usernames/usernames')()
 
 module.exports = io => {
-  const usernames = users()
-
   io.on('connection', socket => {
     console.log('=======> Connected: ')
 
