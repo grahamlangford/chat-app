@@ -1,11 +1,15 @@
 import React from 'react'
 
 const useRenderCounter = () => {
+  const isDev = process.env.NODE_ENV === 'development'
+
   const ref = React.useRef()
   React.useEffect(() => {
-    ref.current.textContent = Number(ref.current.textContent || '0') + 1
+    if (isDev)
+      ref.current.textContent = Number(ref.current.textContent || 0) + 1
   })
-  return (
+
+  return isDev ? (
     <span
       style={{
         backgroundColor: '#ccc',
@@ -17,6 +21,8 @@ const useRenderCounter = () => {
       }}
       ref={ref}
     />
+  ) : (
+    <></>
   )
 }
 
