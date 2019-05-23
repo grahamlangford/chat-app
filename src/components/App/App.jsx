@@ -8,10 +8,8 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Switch from '@material-ui/core/Switch'
 
-import UsernameAside from '../UsernameAside/UsernameAside'
-import MessageBox from '../MessageBox'
-import MessageInput from '../MessageInput'
-import UsernameDialog from '../UsernameDialog'
+import Chat from '../Chat'
+
 import { lightTheme, darkTheme } from './theme'
 import useStyles from './App.styles'
 import { useSocket } from '../../context/chatContext/chatContext'
@@ -27,10 +25,6 @@ const App = () => {
   const classes = useStyles()
 
   const [isDark, setIsDark] = useState(true)
-  const [openDialog, setOpenDialog] = useState(true)
-
-  const toggleDialog = () => setOpenDialog(!openDialog)
-
   const renderCount = useRenderCounter()
 
   return (
@@ -61,36 +55,7 @@ const App = () => {
         </AppBar>
         {renderCount}
 
-        <Grid
-          container
-          alignItems="center"
-          justify="space-around"
-          spacing={0}
-          className={classes.container}
-        >
-          <Grid item xs={12} sm={10} md={3}>
-            <UsernameAside />
-          </Grid>
-
-          <Grid item xs={12} sm={10} md={6}>
-            <Grid
-              container
-              alignItems="flex-start"
-              justify="flex-end"
-              spacing={0}
-            >
-              <Grid item xs={12}>
-                <MessageBox />
-              </Grid>
-
-              <Grid item xs={12}>
-                <MessageInput />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        <UsernameDialog openDialog={openDialog} toggleDialog={toggleDialog} />
+        <Chat />
       </MuiThemeProvider>
     </div>
   )

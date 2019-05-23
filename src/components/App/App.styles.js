@@ -6,7 +6,6 @@ export default makeStyles({
     width: '100vw',
     height: '100vh'
   },
-  container: { maxHeight: '100vh' },
   aside: {
     height: 400,
     width: 200,
